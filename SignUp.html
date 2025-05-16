@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - DBotz</title>
+  <link rel="stylesheet" href="SignUp.css" />
+  <link rel="shortcut icon" href="download.webp" type="image/svg+xml">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="download.webp" alt="DBotz Logo"/>
+    </div>
+    <h2>Account Registration</h2>
+    <p>Create an account with your personal details, email and get started.</p>
+
+    <form id="registerForm">
+      <label for="first-name">First Name</label>
+      <input type="text" name="first-name" placeholder="First Name" id="first-name" required />
+
+      <label for="last-name">Last Name</label>
+      <input type="text" placeholder="Last Name" name="last-name" id="last-name" required />
+
+      <label for="Country">Country</label>
+      <input type="text" placeholder="Country" id="Country" required />
+      <!-- <select required>
+        <option value="">Choose...</option>
+        <option value="nigeria">Nigeria</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+      </select> -->
+
+      <div class="row">
+        <div class="column">
+          <label for="city">City</label>
+          <input type="text" placeholder="Enter City" id="city" name="city" required />
+        </div>
+        <div class="column">
+          <label for="zip">Zipcode (optional)</label>
+          <input type="text" placeholder="Enter Zip" id="zip" name="zip"  />
+        </div>
+      </div>
+
+      <label for="email">Email</label>
+      <input type="email" placeholder="Enter Email" id="email" name="email" required />
+
+
+      <label for="passman">Password</label>
+      <div class="password-box">
+        <input type="password" placeholder="Enter password" id="passman" name="passman" required />
+        <span class="toggle">&#128065;</span>
+      </div>
+
+      <!-- <label>Captcha</label>
+      <img src="captcha.png" alt="Captcha" class="captcha" />
+      <input type="text" placeholder="Enter Captcha code" required /> -->
+
+<div class="terms-container">
+  
+  <label>
+    <input type="checkbox" id="check" required />
+    I agree with the <a href="terms_and_Conditions.html" target="_blank">Terms & Conditions</a>
+  </label>
+</div>
+
+
+      <button type="submit">Register</button>
+
+      <div class="login-link">
+        Already have an account? <a href="SignIn.html">SignIn</a>
+      </div>
+    </form>
+  </div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleIcon = document.querySelector(".password-box .toggle");
+    const passwordInput = document.querySelector(".password-box input");
+
+    toggleIcon.addEventListener("click", function () {
+      const isPassword = passwordInput.getAttribute("type") === "password";
+      passwordInput.setAttribute("type", isPassword ? "text" : "password");
+      toggleIcon.textContent = isPassword ? "🙈" : "👁️";
+    });
+
+    // Optional: Basic password strength check
+    const form = document.getElementById("registerForm");
+    form.addEventListener("submit", function (e) {
+      if (passwordInput.value.length < 6) {
+        e.preventDefault();
+        alert("Password must be at least 6 characters long.");
+        passwordInput.focus();
+      }
+    });
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  background: black;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.9);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo img {
+  width: 150px;
+}
+
+h2 {
+  text-align: center;
+  color: yellow;
+  margin-bottom: 5px;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+form label {
+  font-weight: 500;
+  margin-top: 15px;
+  display: block;
+  color: #fff;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.column {
+  flex: 1;
+}
+
+.password-box {
+  position: relative;
+}
+
+.password-box .toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.captcha {
+  display: block;
+  margin: 15px auto;
+  width: 160px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* .terms {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.terms a {
+  text-decoration: none;
+  color: yellow;
+} */
+
+button {
+  background: yellow;
+  color: black;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+transition: background 0.7s ease;
+}
+
+button:hover {
+  background: lightyellow;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+}
+
+.login-link a {
+  color: yellow;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+.terms-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0;
+}
+.terms-container label {
+  text-decoration: none;
+  color: white;
+}
+.terms-container label a{
+  text-decoration: none;
+  color: yellow;
+}
+.terms-container input[type = "checkbox"] {
+  width: 15px;
+  cursor: pointer;
+}
