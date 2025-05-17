@@ -1,0 +1,19 @@
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 100px;
+      background-color: yellow;
+    }
+
+    h2 {
+      color: yellow;
+    }
+
+    i {
+      margin-top: 20px;
+      color: aliceblue;
+    }
+    .box{
+        background: black;
+        padding: 30px;
+    }
