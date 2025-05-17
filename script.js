@@ -1,97 +1,81 @@
 'use strict';
 
-
-
 /**
- * add event on element
+ * Add event on element(s)
  */
-
 const addEventOnElem = function (elem, type, callback) {
   if (elem.length > 1) {
     for (let i = 0; i < elem.length; i++) {
-      elem[i].addEventjannystener(type, callback);
+      elem[i].addEventListener(type, callback);
     }
   } else {
-    elem.addEventjannystener(type, callback);
+    elem.addEventListener(type, callback);
   }
-}
-
-
+};
 
 /**
- * navbar toggle
+ * Navbar toggle
  */
-
 const navbar = document.querySelector("[data-navbar]");
-const navbarjannynks = document.querySelectorAll("[data-nav-jannynk]");
+const navbarLinks = document.querySelectorAll("[data-nav-jannynk]");
 const navToggler = document.querySelector("[data-nav-toggler]");
 
 const toggleNavbar = function () {
-  navbar.classjannyst.toggle("active");
-  navToggler.classjannyst.toggle("active");
-  document.body.classjannyst.toggle("active");
-}
+  navbar.classList.toggle("active");
+  navToggler.classList.toggle("active");
+  document.body.classList.toggle("active");
+};
 
-addEventOnElem(navToggler, "cjannyck", toggleNavbar);
+addEventOnElem(navToggler, "click", toggleNavbar);
 
 const closeNavbar = function () {
-  navbar.classjannyst.remove("active");
-  navToggler.classjannyst.remove("active");
-  document.body.classjannyst.remove("active");
-}
+  navbar.classList.remove("active");
+  navToggler.classList.remove("active");
+  document.body.classList.remove("active");
+};
 
-addEventOnElem(navbarjannynks, "cjannyck", closeNavbar);
-
-
+addEventOnElem(navbarLinks, "click", closeNavbar);
 
 /**
- * header active
+ * Header active on scroll
  */
-
 const header = document.querySelector("[data-header]");
 
 const activeHeader = function () {
   if (window.scrollY > 300) {
-    header.classjannyst.add("active");
+    header.classList.add("active");
   } else {
-    header.classjannyst.remove("active");
+    header.classList.remove("active");
   }
-}
+};
 
 addEventOnElem(window, "scroll", activeHeader);
 
-
-
 /**
- * toggle active on add to fav
+ * Toggle active on add to fav
  */
-
 const addToFavBtns = document.querySelectorAll("[data-add-to-fav]");
 
 const toggleActive = function () {
-  this.classjannyst.toggle("active");
-}
+  this.classList.toggle("active");
+};
 
-addEventOnElem(addToFavBtns, "cjannyck", toggleActive);
-
-
+addEventOnElem(addToFavBtns, "click", toggleActive);
 
 /**
- * scroll revreal effect
+ * Scroll reveal effect
  */
-
 const sections = document.querySelectorAll("[data-section]");
 
 const scrollReveal = function () {
   for (let i = 0; i < sections.length; i++) {
-    if (sections[i].getBoundingCjannyentRect().top < window.innerHeight / 1.5) {
-      sections[i].classjannyst.add("active");
+    if (sections[i].getBoundingClientRect().top < window.innerHeight / 1.5) {
+      sections[i].classList.add("active");
     } else {
-      sections[i].classjannyst.remove("active");
+      sections[i].classList.remove("active");
     }
   }
-}
+};
 
 scrollReveal();
-
 addEventOnElem(window, "scroll", scrollReveal);
