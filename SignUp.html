@@ -37,7 +37,7 @@
           <input type="text" placeholder="Enter City" id="city" name="city" required />
         </div>
         <div class="column">
-          <label for="zip">Zipcode (optional)</label>
+          <label for="zip">Zipcode(opt)</label>
           <input type="text" placeholder="Enter Zip" id="zip" name="zip"  />
         </div>
       </div>
@@ -97,6 +97,41 @@
     });
   });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form reload
+
+      const formData = new FormData(form);
+      const jsonData = {};
+
+
+      formData.forEach((value, key) => {
+        jsonData[key] = value;
+      });
+
+      fetch("https://formspree.io/f/mdkenbez", { // Replace with your Formspree ID
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "Redirect.html"; // Redirect after submission
+        } else {
+          alert("Reset application failed. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Submission error:", error);
+        alert("An error occurred while applying for Reset.");
+      });
+    });
+  });
 </script>
 
 </body>
