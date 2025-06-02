@@ -72,11 +72,7 @@
       text-decoration: underline;
     }
 
-    .btn{
-      width: 100%;
-      display: flex;
-    }
-    .button {
+    button {
       width: 100%;
       padding: 12px;
       margin-top: 15px;
@@ -88,9 +84,9 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.7s ease;
-      text-decoration: none;
     }
-    .button:hover {
+
+    button:hover {
       background-color: lightyellow;
     }
 
